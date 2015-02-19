@@ -1,0 +1,19 @@
+{
+    "name": "dfcplc/sepa-direct-debit",
+    "description": "SEPA Direct Debit Class for Composer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ciaran Moore",
+            "email": "ciaran.moore@debitfinance.co.uk"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "Dfcplc\\Sepa": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.3.2"
+    }
+}

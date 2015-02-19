@@ -29,6 +29,9 @@
  * SEPA SSD (Sepa Direct Debit) 2.0
  * This class creates a Sepa Direct Debit XML File.
  */
+
+namespace Dfcplc\Sepa;
+
 class SEPASDD {
     
     private $config;
