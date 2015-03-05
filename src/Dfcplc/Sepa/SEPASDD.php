@@ -567,7 +567,7 @@ class SEPASDD {
      * @return True if valid, error string if invalid.
      */
     public static function validateDate($date){
-        $result = DateTime::createFromFormat("Y-m-d",$date);
+        $result = \DateTime::createFromFormat("Y-m-d",$date);
         if($result === false){
             return false;
         }else{
