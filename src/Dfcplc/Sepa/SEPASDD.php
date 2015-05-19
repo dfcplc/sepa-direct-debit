@@ -173,7 +173,7 @@ class SEPASDD {
             }
             $ChrgBrNode             = $this->xml->createElement("ChrgBr");
             $CdtrSchmeIdNode        = $this->xml->createElement("CdtrSchmeId");
-            $Nm_CdtrSchmeId_Node    = $this->xml->createElement("Nm");
+            //$Nm_CdtrSchmeId_Node    = $this->xml->createElement("Nm");
             $Id_CdtrSchmeId_Node    = $this->xml->createElement("Id");
             $PrvtIdNode             = $this->xml->createElement("PrvtId");
             $OthrNode               = $this->xml->createElement("Othr");
@@ -203,11 +203,11 @@ class SEPASDD {
             }
             $ChrgBrNode->nodeValue          = "SLEV";
 
-            if( version_compare(PHP_VERSION, '5.4.0') >= 0){
+            /*if( version_compare(PHP_VERSION, '5.4.0') >= 0){
                 $Nm_CdtrSchmeId_Node->nodeValue = htmlentities($this->config['name'], ENT_XML1, 'UTF-8' );
             }else{
                 $Nm_CdtrSchmeId_Node->nodeValue = htmlentities($this->config['name'], ENT_QUOTES, 'UTF-8' );
-            }
+            }*/
 
             $Id_Othr_Node->nodeValue        = $this->config['creditor_id'];
             $PrtryNode->nodeValue           = "SEPA";
@@ -299,7 +299,7 @@ class SEPASDD {
             
             $PmtInfNode->appendChild($ChrgBrNode);
             
-                $CdtrSchmeIdNode->appendChild($Nm_CdtrSchmeId_Node);            
+                //$CdtrSchmeIdNode->appendChild($Nm_CdtrSchmeId_Node);            
                             $OthrNode->appendChild($Id_Othr_Node);
                                 $SchmeNmNode->appendChild($PrtryNode);
                             $OthrNode->appendChild($SchmeNmNode);
