@@ -37,6 +37,7 @@ class SEPASDD {
     private $config;
     private $XML;
     private $batchArray = array();
+    private $msgId;
     
     function __construct($config){
         //Check the config
@@ -86,6 +87,15 @@ class SEPASDD {
     }//prepareDocument
     
     /**
+     * Function to retrieve the Message ID
+    */
+
+    public function getMsgId()
+    {
+        return $this->msgId;
+    }
+
+    /**
      * Function to create the GroupHeader (GrpHdr) in the CstmrDrctDbtInit Node
      */
     private function createGroupHeader(){
@@ -103,6 +113,7 @@ class SEPASDD {
         
         //Set the values for the nodes
         $MsgIdNode->nodeValue = $this->makeMsgId();
+        $this->msgId = $MsgIdNode->nodeValue;
         $CreDtTmNode->nodeValue = date("c");
 
        //If using lower than PHP 5.4.0, there is no ENT_XML1
