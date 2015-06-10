@@ -38,6 +38,7 @@ class SEPASDD {
     private $XML;
     private $batchArray = array();
     private $msgId;
+    private $pmntId;
     
     function __construct($config){
         //Check the config
@@ -150,6 +151,7 @@ class SEPASDD {
             throw new \Exception("Invalid Payment, error with: ".$validationResult);
         }
         
+        $this->pmntId = $this->makeId();
         //Get the CstmrDrctDbtInitnNode 
         $CstmrDrctDbtInitnNode  = $this->getCstmrDrctDbtInitnNode();
         
@@ -192,7 +194,7 @@ class SEPASDD {
             $SchmeNmNode            = $this->xml->createElement("SchmeNm");
             $PrtryNode              = $this->xml->createElement("Prtry");
             
-            $PmtInfIdNode->nodeValue        = $this->makeId();
+            $PmtInfIdNode->nodeValue        = $this->pmntId;
             $PmtMtdNode->nodeValue          = "DD"; //Direct Debit
             $BtchBookgNode->nodeValue       = "false";
             $NbOfTxsNode->nodeValue         = "1";
@@ -279,7 +281,7 @@ class SEPASDD {
             $UstrdNode->nodeValue       = htmlentities($payment['description'], ENT_QUOTES, 'UTF-8' );     
         }
 
-        $EndToEndIdNode->nodeValue      = $this->makeId();
+        $EndToEndIdNode->nodeValue      = $this->pmntId;
         
         //Fold the nodes, if batch is enabled, some of this will be done by the batch.
         if($this->config['batch'] == false){
@@ -749,7 +751,7 @@ class SEPASDD {
         $PrtryNode              = $this->xml->createElement("Prtry");
         
         //Fill in the blanks
-        $PmtInfIdNode->nodeValue        = $this->makeId();
+        $PmtInfIdNode->nodeValue        = $this->pmntId;
         $PmtMtdNode->nodeValue          = "DD"; //Direct Debit
         $BtchBookgNode->nodeValue       = "true";
         $CtrlSumNode->nodeValue         = "0";
