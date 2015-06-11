@@ -144,14 +144,20 @@ class SEPASDD {
      * @param the payment to be added in the form of an array
      * @throws Exception if payment array is invalid.
      */
-    public function addPayment($payment){
+    public function addPayment($payment,$pmntId=null){
         //First validate the payment array
         $validationResult = $this->validatePayment($payment);
         if($validationResult !== true){
             throw new \Exception("Invalid Payment, error with: ".$validationResult);
         }
-        
-        $this->pmntId = $this->makeId();
+        if(!is_null($pmntId))
+        {
+            $this->pmntId = $pmntId;        
+        }
+        else
+        {
+            $this->pmntId = $this->makeId();
+        }
         //Get the CstmrDrctDbtInitnNode 
         $CstmrDrctDbtInitnNode  = $this->getCstmrDrctDbtInitnNode();
         
