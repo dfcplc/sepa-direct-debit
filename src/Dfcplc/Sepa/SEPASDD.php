@@ -55,6 +55,12 @@ class SEPASDD {
         $this->createGroupHeader();
     }//__construct
     
+    public function giveId()
+    {
+        return $this->makeId();
+    }
+
+
     /**
      * Build the main document node and set xml namespaces.
      */
