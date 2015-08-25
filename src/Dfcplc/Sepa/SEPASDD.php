@@ -67,6 +67,9 @@ class SEPASDD {
     private function prepareDocument(){
         //Create the XML Instance
         $this->xml = new \DOMDocument("1.0","UTF-8");
+
+        $this->xml->formatOutput = true;
+        $this->xml->preserveWhiteSpace = true;
         
         //Create the document node
         $documentNode = $this->xml->createElement("Document");
